@@ -1,0 +1,12 @@
+
+@if(posts$ | async; as posts){
+  <ul class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+    @for (post of posts; track post.id) {
+      <app-post [post]="post"></app-post>
+    } @empty {
+      <h1>Empty</h1>
+    }
+  </ul>
+} @else {
+  <h1>loading ...</h1>
+}

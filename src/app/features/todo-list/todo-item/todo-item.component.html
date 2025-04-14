@@ -1,0 +1,8 @@
+<li class="bg-zinc-50 flex gap-4 rounded p-4">
+  @if(todo.completed){
+    <button (click)="toggleStatus(todo.id)" class="text-teal-500 font-bold cursor-pointer">DONE</button>
+  } @else {
+    <button (click)="toggleStatus(todo.id)" class="text-red-500 font-bold cursor-pointer">TODO</button>
+  }
+  <span [ngClass]="{'line-through': todo.completed}">{{todo.title}}</span>
+</li>

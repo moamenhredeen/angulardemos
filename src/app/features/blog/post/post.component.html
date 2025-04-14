@@ -1,0 +1,5 @@
+<li class=" p-4 rounded hover:bg-zinc-50">
+  <h3 class="text-2xl">{{ post.title }}</h3>
+  <p>{{post.body}}</p>
+  <a class="text-teal-500 cursor-pointer" [routerLink]="[post.id]">Read more</a>
+</li>

@@ -1,0 +1,20 @@
+@if(post$ | async; as post){
+  <div class="flex flex-col gap-4">
+    <h1 class="text-4xl">{{post.title}}</h1>
+    <p>{{post.body}}</p>
+
+    @if(comment$ | async; as comments){
+      <ul class="bg-zinc-50 rounded-xl p-4">
+        <h1 class="text-2xl p-2">Comments</h1>
+      @for (comment of comments; track $index) {
+        <app-comment [comment]="comment"></app-comment>
+        @if($index < comments.length - 1){
+          <hr class="border-zinc-200 m-4">
+        }
+      } @empty {
+        <p class="text-zinc-300 text-center">no comments</p>
+      }
+      </ul>
+    }
+  </div>
+}
