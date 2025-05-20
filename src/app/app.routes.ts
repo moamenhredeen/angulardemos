@@ -18,6 +18,10 @@ export const routes: Routes = [
     loadComponent: () => import("./features/todo-list/todo-list.component").then(c => c.TodoListComponent),
   },
   {
+    path: "dashboard",
+    loadComponent: () => import("./features/dashboard/dashboard.component").then(c => c.DashboardComponent),
+  },
+  {
     path: "about",
     loadComponent: () => import("./features/about/about.component").then(c => c.AboutComponent),
   },

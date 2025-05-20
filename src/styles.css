@@ -24,3 +24,29 @@ body {
   font-family: "Inter", serif;
   font-weight: 200;
 }
+
+.card {
+  @apply bg-white rounded-lg shadow-md p-4 relative;
+  @apply border border-gray-100;
+  @apply transition-all duration-200 ease-in-out;
+}
+
+.card:hover {
+  @apply shadow-lg;
+  @apply border-gray-200;
+  transform: translateY(-2px);
+}
+
+.card-header {
+  @apply font-medium text-lg mb-4 pb-2;
+  @apply border-b border-gray-100;
+}
+
+.card-body {
+  @apply space-y-4;
+}
+
+.card-footer {
+  @apply mt-4 pt-2;
+  @apply border-t border-gray-100;
+}
