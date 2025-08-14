@@ -1,5 +1,41 @@
 
-<div class="flex flex-col h-full justify-center items-center">
-  <h1 class="text-6xl pb-4 text-teal-500">Angular Demos</h1>
-  <h3 class="text-xl">Angular Demos is the place to dive deep into angular framework</h3>
+
+<div class="p-8">
+<table class="border-collapse w-full" cdk-table [dataSource]="data">
+
+  <!-- Title Column -->
+  <ng-container cdkColumnDef="title">
+  <th class="text-start p-2" cdk-header-cell *cdkHeaderCellDef> Title </th>
+    <td class="p-2" cdk-cell *cdkCellDef="let element"> 
+      <a [routerLink]="element.url" class="cursor-pointer underline">
+        {{element.title}} 
+      </a>
+    </td>
+  </ng-container>
+
+  <!-- Description Column -->
+  <ng-container cdkColumnDef="description">
+    <th class="text-start p-2" cdk-header-cell *cdkHeaderCellDef> Description </th>
+    <td class="p-2" cdk-cell *cdkCellDef="let element"> {{element.description}} </td>
+  </ng-container>
+
+  <!-- Status Column -->
+  <ng-container cdkColumnDef="status">
+    <th class="text-start p-2" cdk-header-cell *cdkHeaderCellDef> Status </th>
+      <td class="p-2" cdk-cell *cdkCellDef="let element"> 
+        @if (element.status == 'InProgress') {
+        <span class="bg-amber-300 px-2 rounded-4xl">
+          {{element.status}} 
+        </span>
+        } @else {
+        <span class="bg-green-300 px-2 rounded-4xl">
+          {{element.status}} 
+        </span>
+        }
+      </td>
+  </ng-container>
+
+  <tr class="border-b-1" cdk-header-row *cdkHeaderRowDef="displayedColumns"></tr>
+  <tr class="" cdk-row *cdkRowDef="let row; columns: displayedColumns;"></tr>
+</table>
 </div>

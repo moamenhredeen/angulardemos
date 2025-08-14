@@ -22,6 +22,10 @@ export const routes: Routes = [
     loadComponent: () => import("./features/about/about.component").then(c => c.AboutComponent),
   },
   {
+    path: "filtering",
+    loadComponent: () => import("./features/filtering/filtering.component").then(c => c.FilteringComponent),
+  },
+  {
     path: "",
     redirectTo: "home",
     pathMatch: "full" // TODO: why
