@@ -1,0 +1,7 @@
+
+###
+# @name quote list
+GET https://favqs.com/api/quotes
+Authorization: Token token="4dce72f25f94b62dd7d74c85f1ad8b96"
+Content-Type: application/json
+Accept: application/json

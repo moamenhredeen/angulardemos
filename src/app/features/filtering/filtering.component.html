@@ -1,1 +1,64 @@
-<p>filtering works!</p>
+<div class="p-4 text-zinc-800">
+    <div class="flex flex-col items-center">
+        <h1 class="p-8 text-6xl">Top News</h1>
+    </div>
+
+    <form class="bg-zinc-50 flex gap-2 p-2">
+        <input class="border-1 border-zinc-300 p-2 w-124 rounded" type="text" [formControl]="searchInput"
+            placeholder="Search tasks...">
+        <button 
+            type="button"
+            class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+            (click)="refreshData()">
+            Refresh
+        </button>
+    </form>
+    <div class="mt-4">
+        @if (dataSource.loading()) {
+            <div class="flex justify-center items-center py-8">
+                <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
+                <span class="ml-2">Loading tasks...</span>
+            </div>
+        }
+        
+        <table class="border-collapse w-full" cdk-table [dataSource]="dataSource">
+
+            <ng-container cdkColumnDef="content">
+                <th class="text-start p-2" cdk-header-cell *cdkHeaderCellDef> Body </th>
+                <td class="p-2" cdk-cell *cdkCellDef="let element">
+                    {{element.content}}
+                </td>
+            </ng-container>
+
+
+            <ng-container cdkColumnDef="priority">
+                <th class="text-start p-2" cdk-header-cell *cdkHeaderCellDef> Priority </th>
+                <td class="p-2" cdk-cell *cdkCellDef="let element">
+                    {{element.priority}}
+                </td>
+            </ng-container>
+
+            <ng-container cdkColumnDef="labels">
+                <th class="text-start p-2" cdk-header-cell *cdkHeaderCellDef> Tags </th>
+                <td class="p-2" cdk-cell *cdkCellDef="let element">
+                    {{element.labels}}
+                </td>
+            </ng-container>
+
+
+            <ng-container cdkColumnDef="status">
+                <th class="text-start p-2" cdk-header-cell *cdkHeaderCellDef> Status </th>
+                <td class="p-2" cdk-cell *cdkCellDef="let element">
+                    @if (element.checked) {
+                    <span class="bg-green-200 rounded-full py-1 px-3 text-xs">Done</span>
+                    }@else {
+                    <span class="bg-red-200 rounded-full py-1 px-3 text-xs">Todo</span>
+                    }
+                </td>
+            </ng-container>
+
+            <tr class="border-b-1 text-zinc-700 border-zinc-400" cdk-header-row *cdkHeaderRowDef="displayedColumns"></tr>
+            <tr class="" cdk-row *cdkRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+    </div>
+</div>
